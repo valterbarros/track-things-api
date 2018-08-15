@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  repeat_days: 
+  deadline: 2018-08-15 00:48:48
+
+two:
+  title: MyString
+  description: MyString
+  repeat_days: 
+  deadline: 2018-08-15 00:48:48
