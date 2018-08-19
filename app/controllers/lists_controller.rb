@@ -43,6 +43,7 @@ class ListsController < ApplicationController
       List.includes(:tasks).map do |list|
         list_result = list.attributes
         list_result[:tasks] = list.tasks
+        list_result[:deadline] = I18n.l list.deadline.to_date
         list_result
       end
     end
