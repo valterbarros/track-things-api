@@ -3,7 +3,7 @@ class ListsController < ApplicationController
 
   # GET /lists
   def index
-    @lists = List.all
+    @lists = list_with_tasks
 
     render json: @lists
   end
@@ -41,7 +41,9 @@ class ListsController < ApplicationController
   private
     def list_with_tasks
       List.includes(:tasks).map do |list|
-        list.task
+        list_result = list.attributes
+        list_result[:tasks] = list.tasks
+        list_result
       end
     end
     # Use callbacks to share common setup or constraints between actions.
@@ -51,6 +53,6 @@ class ListsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def list_params
-      params.require(:list).permit(:title, :description, :repeat_days, :deadline)
+      params.require(:list).permit(:title, :description, :repeat_days, :deadline, tasks_attributes: [:title])
     end
 end
