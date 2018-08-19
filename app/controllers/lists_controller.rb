@@ -39,6 +39,11 @@ class ListsController < ApplicationController
   end
 
   private
+    def list_with_tasks
+      List.includes(:tasks).map do |list|
+        list.task
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_list
       @list = List.find(params[:id])
