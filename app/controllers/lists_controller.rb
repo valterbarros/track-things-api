@@ -54,6 +54,6 @@ class ListsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def list_params
-      params.require(:list).permit(:title, :description, :repeat_days, :deadline, tasks_attributes: [:title])
+      params.require(:list).permit(:title, :description, :deadline, tasks_attributes: [:title], repeat_days: [])
     end
 end
